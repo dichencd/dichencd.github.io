@@ -13,6 +13,19 @@ toc:
 
 This post shows how to add a table of contents in the beginning of the post.
 
+第一步 open loop
+我们现在的问题并不是说场景representation啊，encoding部分不对，而是我们只学了conditional distribution p(y|x). 不管是连续还是离散的x/y, 其实问题的关键都不是单独的x 或者单独的y, 而是要把y|x 看成一个整体。视频生成任务是的，
+
+不是说我们去学一个准确的data distribution 就行了，关键问题是：我们要学的data distribution 是什么？
+p(y|x) = p(x,y)| p(x) = p(y) p (x|y) | p(x)
+--> p(y|x) ~ p(y) p (x|y) (trajectory distribution * occ distribution)
+
+p(s_t1, s_t, a_t) / p(s_t, a_t) = p(s_t1, a_t|s_t) p(s_t) | p(s_t, a_t) = p(s_t1, a_t|s_t) | p(a_t|s_t)
+p(s_t1 | s_t) = \sum p(a_t|s_t) p (s_t1|s_t, a_t)
+p(a_t|s_t) = \sum p(s_t1|s_t)p(a_t|s_t, s_t1)
+p(s_t1|s_t, a_t) ~ p(s_t1|s_t) p(a_t| s_t)
+第二步 closed loop
+如果open loop 做好了，closed loop 是自然而然就能做好的吗？
 ## Adding a Table of Contents
 
 To add a table of contents to a post, simply add
